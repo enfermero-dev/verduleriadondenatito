@@ -29,7 +29,7 @@
     .page {
       display: flex;
       flex-direction: column;
-      gap: 0;
+      gap: 0; /* sin barra blanca entre secciones */
     }
 
     section { padding: 48px 16px; }
@@ -61,32 +61,32 @@
       position: relative;
       background: var(--bg-soft);
       padding-top: 64px; padding-bottom: 64px;
-      overflow: hidden;
+      overflow: hidden; /* asegura que los fondos laterales no desborden */
     }
-
+    /* Fondos decorativos laterales */
     .hero::before, .hero::after {
       content: "";
       position: absolute;
-      top: 0; bottom: 0;
-      width: min(22vw, 280px);
+      top: 0; bottom: 0; /* ocupa todo el alto disponible */
+      width: min(22vw, 280px); /* ancho responsivo controlado */
       background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      pointer-events: none;
+      background-size: cover; /* cubre verticalmente */
+      background-position: center; /* centrado en su banda */
+      pointer-events: none; /* no interfiere con interacción */
     }
     .hero::before {
-      left: 0;
-      background-image: url('https://verduleriadonde%C3%B1atito.cl/assets/header izquierdo.png');
+      left: 0; /* pegado al borde izquierdo */
+      background-image: url('assets/header izquierdo.png');
     }
     .hero::after {
-      right: 0;
-      background-image: url('https://verduleriadonde%C3%B1atito.cl/assets/header derecha.png');
+      right: 0; /* pegado al borde derecho */
+      background-image: url('assets/header derecha.png');
     }
 
     .hero-grid {
       display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 32px; align-items: center;
-      position: relative;
+      position: relative; /* para estar sobre los fondos laterales */
       z-index: 1;
     }
     .hero-tag { font-size: 0.85rem; font-weight: 600; color: var(--green-soft); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
@@ -95,80 +95,72 @@
     .hero-badges { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.85rem; color: #555; }
     .hero-badge { padding: 6px 10px; border-radius: 999px; background: rgba(27,94,32,0.06); }
 
-    .hero-image {
-      position: relative;
-      border-radius: 26px;
-      overflow: hidden;
-      box-shadow: 0 14px 32px rgba(0,0,0,0.18);
-      background: transparent;
-    }
-    .hero-image img {
-      height: 100%; width: 100%; object-fit: contain; background: transparent;
-      background-image: url('https://verduleriadonde%C3%B1atito.cl/assets/logo head al medio.png');
-    }
+    .hero-image { position: relative; border-radius: 26px; overflow: hidden; box-shadow: 0 14px 32px rgba(0,0,0,0.18); background: transparent; }
+    .hero-image img { height: 100%; width: 100%; object-fit: contain; background: transparent; }
 
     /* CONÓCEME */
     .about { background: #135c26; color: #f7fff6; }
     .about-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 32px; align-items: center; }
-    .about-photo img { border-radius: 22px; box-shadow: 0 12px 26px rgba(0,0,0,0.35); }
-
+    .about-photo { border-radius: 22px; overflow: hidden; box-shadow: 0 12px 26px rgba(0,0,0,0.35); }
     .about h2 { color: #ffffff; }
     .about p { color: #e9ffea; }
+    .about-strong { font-weight: 600; }
 
     /* POR QUÉ ELEGIRNOS */
-    .reasons {
-      position: relative;
-      color: #ffffff;
-      background: url("https://verduleriadonde%C3%B1atito.cl/assets/seccion%20por%20que%20elegirnos%20Fondo.jpg") center/cover no-repeat fixed;
-    }
+    .reasons { position: relative; color: #ffffff; background: url("assets/seccion por que elegirnos Fondo.jpg") center/cover no-repeat fixed; }
+    .reasons-overlay { background: rgba(0,0,0,0.55); border-radius: 24px; padding: 32px 24px; }
+    .reasons-title { text-align: center; margin-bottom: 24px; }
+    .reasons-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
+    .reason-item { text-align: center; font-size: 0.98rem; }
+    .reason-number { width: 40px; height: 40px; border-radius: 999px; background: #2e7d32; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 10px; }
 
-    .reasons-overlay {
-      background: rgba(0,0,0,0.55);
-      border-radius: 24px;
-      padding: 32px 24px;
-    }
-
-    .reasons-grid {
-      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px;
-    }
-
-    .reason-number {
-      width: 40px; height: 40px; border-radius: 999px;
-      background: #2e7d32; display: flex; align-items: center; justify-content: center;
-      font-weight: 700; margin: 0 auto 10px;
-    }
-
-    /* ARMA TU CAJA */
+    /* ARMA TU CAJA (idea 5) */
     .box-builder { background: #fafef8; }
-    .box-card {
-      border-radius: 22px;
-      background: #ffffff;
-      padding: 20px 18px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-      font-size: 0.92rem;
-    }
+    .box-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+    .box-list { list-style: none; margin: 12px 0 20px; padding-left: 0; }
+    .box-list li { margin-bottom: 6px; }
+    .box-list li::before { content: "•"; color: var(--green-main); font-weight: 900; margin-right: 8px; }
+    .box-card { border-radius: 22px; background: #ffffff; padding: 20px 18px; box-shadow: 0 8px 22px rgba(0,0,0,0.12); font-size: 0.92rem; }
 
     /* PRECIOS */
     .prices { background: #fdfaf3; }
-    .prices-image img {
-      border-radius: 18px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-    }
+    .prices h2 { letter-spacing: 0.12em; font-size: 1.4rem; margin-bottom: 18px; }
+    .prices-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-bottom: 32px; }
+    .price-card { background: #ffffff; border-radius: 18px; padding: 20px 16px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+    .price-amount { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
+    .price-products { font-size: 0.95rem; color: #555; }
+    .prices-extra { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: center; }
+    .prices-image img { border-radius: 18px; box-shadow: 0 10px 24px rgba(0,0,0,0.18); }
 
-    .prices-image img {
-      content: url("https://verduleriadonde%C3%B1atito.cl/assets/seccion arma tu pedido.jpg");
-    }
+    /* OPINIONES */
+    .opinions { background: #135c26; color: #f0fff0; }
+    .opinions-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr); gap: 32px; }
+    .opinions-title h2 { color: #ffffff; margin-bottom: 12px; }
+    .opinions-title p { color: #e4ffe4; }
 
     /* KITS */
     .kits { background: #e3f4dd; }
-    .kit-card img {
-      height: 190px;
-      object-fit: cover;
-      border-radius: 14px;
-    }
+    .kits-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+    .kits-subtitle { max-width: 380px; font-size: 0.95rem; }
+    .kits-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }
+    .kit-card { background: #ffffff; border-radius: var(--radius-card); padding: 18px 18px 22px; display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.12); gap: 12px; }
+    .kit-card img { border-radius: 14px; height: 190px; object-fit: cover; }
 
     /* CONTACTO */
     .contact { background: #145826; color: #f7fff4; padding-bottom: 60px; }
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 28px; align-items: flex-start; }
+    .contact h2 { color: #ffffff; margin-bottom: 10px; }
+    .contact h3 { margin-top: 8px; margin-bottom: 4px; font-size: 1rem; color: #e4ffe2; }
+    .contact p { margin-bottom: 8px; color: #e1ffe0; font-size: 0.95rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .box-grid, .opinions-grid, .prices-extra, .contact-grid { grid-template-columns: minmax(0,1fr); }
+      .hero-image { order: -1; }
+      .reasons-grid, .kits-grid, .prices-grid { grid-template-columns: minmax(0,1fr); }
+      .reasons { background-attachment: scroll; }
+      .hero::before, .hero::after { width: 28vw; }
+    }
   </style>
 </head>
 <body>
@@ -195,7 +187,8 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="https://verduleriadonde%C3%B1atito.cl/assets/logo%20head%20al%20medio.png" alt="Logo Donde Ñatito" />
+          <!-- Imagen principal del header: logo en el centro -->
+          <img src="assets/logo head al medio.png" alt="Logo Donde Ñatito" />
         </div>
       </div>
     </section>
@@ -204,13 +197,13 @@
     <section class="about" id="conoceme">
       <div class="wrap about-grid">
         <div class="about-photo">
-          <img src="https://verduleriadonde%C3%B1atito.cl/assets/fondo%20segunda%20seccion%20conoceme.jpg" alt="Puesto de frutas y verduras de Donde Ñatito en Coronel" />
+          <img src="assets/fondo segunda seccion conoceme.jpg" alt="Puesto de frutas y verduras de Donde Ñatito en Coronel" />
         </div>
         <div>
           <h2>Conóceme</h2>
-          <p>En <strong>Donde Ñatito</strong> nacimos el año 2025 con una idea simple: que en Paso Seco Sur, justo detrás del CESFAM Carlos Pinto Fierro, las familias pudieran tener frutas y verduras frescas sin depender siempre del supermercado.</p>
+          <p>En <span class="about-strong">Donde Ñatito</span> nacimos el año 2025 con una idea simple: que en Paso Seco Sur, justo detrás del CESFAM Carlos Pinto Fierro, las familias pudieran tener frutas y verduras frescas sin depender siempre del supermercado.</p>
           <p>Somos una pareja joven del sector y vimos una necesidad clara: en el barrio no había verdulerías cercanas ni productos realmente frescos para el día a día. Por eso decidimos crear una solución pensada para la comunidad.</p>
-          <p>Cada mañana seleccionamos productos directamente en la <strong>Vega de Concepción</strong> y los llevamos a nuestro local o a la puerta de tu casa con nuestro servicio de delivery, siempre con el foco puesto en la calidad, el sabor y la cercanía.</p>
+          <p>Cada mañana seleccionamos productos directamente en la <span class="about-strong">Vega de Concepción</span> y los llevamos a nuestro local o a la puerta de tu casa con nuestro servicio de delivery, siempre con el foco puesto en la calidad, el sabor y la cercanía.</p>
           <p>Creemos en lo simple: comida fresca, atención amable y un servicio que haga tu vida más fácil.</p>
         </div>
       </div>
@@ -220,27 +213,110 @@
     <section class="reasons" id="por-que-elegirnos">
       <div class="wrap">
         <div class="reasons-overlay">
-          <h2>Por qué elegirnos</h2>
+          <div class="reasons-title">
+            <h2>Por qué elegirnos</h2>
+          </div>
           <div class="reasons-grid">
-
             <div class="reason-item">
               <div class="reason-number">1</div>
               <h3>Productos frescos del día</h3>
               <p>Traídos cada mañana directamente desde la Vega de Concepción para ofrecerte sabor y calidad superiores a la del supermercado.</p>
             </div>
-
             <div class="reason-item">
               <div class="reason-number">2</div>
               <h3>Delivery rápido en Coronel</h3>
               <p>Llevamos tu pedido hasta tu casa en Paso Seco Sur, Lagunillas, Yobilo y otros sectores, con entregas seguras y puntuales.</p>
             </div>
-
             <div class="reason-item">
               <div class="reason-number">3</div>
               <h3>Atención cercana y familiar</h3>
               <p>Somos tus vecinos y queremos mejorar la vida del barrio con un servicio honesto, cálido y de confianza.</p>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ARMA TU CAJA PERSONALIZADA -->
+    <section class="box-builder" id="arma-tu-caja">
+      <div class="wrap box-grid">
+        <div>
+          <h2>Arma tu caja personalizada</h2>
+          <p>Elige las frutas y verduras que más te gustan, nosotros las seleccionamos frescas y las llevamos listas a tu hogar.</p>
+          <ul class="box-list">
+            <li>Selecciona tus frutas favoritas.</li>
+            <li>Agrega las verduras de la semana.</li>
+            <li>Incluye extras como huevos o hierbas.</li>
+            <li>Nosotros armamos la caja y la entregamos en tu domicilio.</li>
+          </ul>
+          <button class="btn btn-primary">Quiero armar mi caja</button>
+        </div>
+        <div class="box-card">
+          <h3>Ejemplo de caja personalizada</h3>
+          <p>Frutillas, plátanos, manzanas, paltas, tomates, lechuga, zanahorias, cebolla, limón y papas. Todo fresco y listo para tus comidas de la semana.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="prices" id="precios">
+      <div class="wrap">
+        <h2>Precios</h2>
+        <div class="prices-grid">
+          <article class="price-card">
+            <div class="price-amount">$20.000</div>
+            <div class="price-products">10 productos</div>
+          </article>
+          <article class="price-card">
+            <div class="price-amount">$30.000</div>
+            <div class="price-products">20 productos</div>
+          </article>
+          <article class="price-card">
+            <div class="price-amount">$50.000</div>
+            <div class="price-products">30 productos</div>
+          </article>
+        </div>
+        <div class="prices-extra">
+          <div class="prices-image">
+            <img src="assets/seccion arma tu pedido.jpg" alt="Bolsa con verduras frescas lista para entregar" />
+          </div>
+          <div class="prices-order">
+            <h3>Arma tu pedido</h3>
+            <ul>
+              <li>Elige tus frutas favoritas.</li>
+              <li>Suma verduras de la semana.</li>
+              <li>Agrega extras como huevos o hierbas.</li>
+              <li>Nosotros la armamos y te la llevamos.</li>
+            </ul>
+            <button class="btn btn-primary">Armar mi caja</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIONES -->
+    <section class="opinions" id="opiniones">
+      <div class="wrap opinions-grid">
+        <div class="opinions-title">
+          <h2>Opiniones</h2>
+          <p>Escucha lo que dicen tus vecinos que ya reciben sus frutas y verduras con Donde Ñatito.</p>
+        </div>
+        <div>
+          <div class="opinion">
+            <p>“Por fin tenemos frutas y verduras frescas en el sector. Todo llegó impecable y con un aroma increíble. Se nota que son productos del día.”</p>
+            <small>@cliente_coronel</small>
+          </div>
+          <div class="opinion">
+            <p>“Antes siempre tenía que ir al súper porque no había verdulerías cerca. Ahora Donde Ñatito me salva todas las semanas con delivery rápido.”</p>
+            <small>@vecina_pasosecosur</small>
+          </div>
+          <div class="opinion">
+            <p>“La calidad es otra cosa: las paltas y las frutillas llegaron perfectas. Mis niños quedaron felices porque saben más ricas que las del supermercado.”</p>
+            <small>@familia_lagunillas</small>
+          </div>
+          <div class="opinion">
+            <p>“Excelente atención, súper amables y responsables. Me encanta apoyar un emprendimiento del barrio que realmente piensa en la comunidad.”</p>
+            <small>@comprador_local</small>
           </div>
         </div>
       </div>
@@ -249,41 +325,35 @@
     <!-- KITS -->
     <section class="kits" id="kits">
       <div class="wrap">
-
         <div class="kits-header">
           <h2>Kits</h2>
-          <p class="kits-subtitle">Elige el formato que mejor se ajuste a tu hogar. Todos los kits incluyen frutas y verduras frescas de temporada.</p>
+          <p class="kits-subtitle">Elige el formato que mejor se ajuste a tu hogar. Todos los kits incluyen frutas y verduras frescas de temporada, listas para disfrutar.</p>
         </div>
-
         <div class="kits-grid">
-
           <article class="kit-card">
-            <img src="https://verduleriadonde%C3%B1atito.cl/assets/seccion%20kit%20de%20verduras,%20bolsa%20de%2010.jpg" alt="Bolsa con 10 productos frescos" />
+            <img src="assets/seccion kit de verduras, bolsa de 10.jpg" alt="Bolsa con 10 productos frescos" />
             <div>
               <div class="kit-name">Bolsa de 10 productos</div>
               <div class="kit-label">Selección fresca y variada para la semana.</div>
             </div>
             <button class="btn btn-primary">Pedir Bolsa de 10</button>
           </article>
-
           <article class="kit-card">
-            <img src="https://verduleriadonde%C3%B1atito.cl/assets/seccion%20kit%20de%20verduras,%20bolsa%20de%2020.jpg" alt="Bolsa con 20 productos frescos" />
+            <img src="assets/seccion kit de verduras, bolsa de 20.jpg" alt="Bolsa con 20 productos frescos" />
             <div>
               <div class="kit-name">Bolsa de 20 productos</div>
               <div class="kit-label">Más cantidad y variedad para tu hogar.</div>
             </div>
             <button class="btn btn-primary">Pedir Bolsa de 20</button>
           </article>
-
           <article class="kit-card">
-            <img src="https://verduleriadonde%C3%B1atito.cl/assets/seccion%20kit%20de%20verduras,%20caja.png" alt="Caja familiar con 30 productos" />
+            <img src="assets/seccion kit de verduras, caja.png" alt="Caja familiar con 30 productos" />
             <div>
               <div class="kit-name">Caja familiar (30 productos)</div>
               <div class="kit-label">La opción más completa y económica.</div>
             </div>
             <button class="btn btn-primary">Pedir Caja Familiar</button>
           </article>
-
         </div>
       </div>
     </section>
@@ -291,14 +361,13 @@
     <!-- CONTACTO -->
     <section class="contact" id="contacto">
       <div class="wrap contact-grid">
-        <div>
+        <div class="contact-block">
           <h2>Contáctanos</h2>
           <p>¿Quieres hacer un pedido o tienes dudas? Escríbenos y te ayudamos.</p>
-          <p><strong>Sitio web:</strong> verduleriadondeñatito.cl</p>
+          <p><strong>Sitio web:</strong> dondeñatito.cl</p>
           <p><strong>WhatsApp:</strong> (+56) 9 9999 9999</p>
         </div>
-
-        <div>
+        <div class="contact-block">
           <h3>Redes sociales</h3>
           <p>Instagram · Facebook</p>
           <h3>Ubicación</h3>
