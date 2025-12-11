@@ -149,6 +149,59 @@ p {
   z-index: 1;
 }
 
+.hero-ctas {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+/* HERO - Responsive Fix */
+@media (max-width: 768px) {
+
+  /* El hero se vuelve 1 columna */
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: left; /* o center si lo prefieres */
+    gap: 24px;
+  }
+
+  /* Reducir tamaño del h1 para móviles */
+  .hero h1 {
+    font-size: 1.9rem;
+    line-height: 1.25;
+  }
+
+  /* Eliminar fondos laterales en móvil para evitar que empujen contenido */
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+  }
+
+  /* Imagen del hero debajo del texto */
+  .hero-image {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ajustar el hero-tag y hero-lead */
+  .hero-tag {
+    font-size: 0.9rem;
+  }
+
+  .hero-lead {
+    font-size: 1rem;
+  }
+}
+
 /* CONÓCEME */
 .about {
   background: #135c26;
