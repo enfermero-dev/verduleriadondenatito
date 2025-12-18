@@ -1,0 +1,52 @@
+{
+  "waNumber": "56981768060",
+  "categories": [
+    {
+      "id": "verduras_frutas",
+      "title": "Verduras y frutas",
+      "items": [
+        { "id": "p1", "name": "Cebolla Morada (unidad)", "price": 500 },
+        { "id": "p2", "name": "Cebolla nueva (5x)", "price": 1000 },
+        { "id": "p3", "name": "Lechuga", "price": 1000 },
+        { "id": "p4", "name": "Perejil", "price": 700 },
+        { "id": "p5", "name": "Cilantro", "price": 700 },
+        { "id": "p6", "name": "Acelga", "price": 1000 },
+        { "id": "p7", "name": "Porro", "price": 1000 },
+        { "id": "p8", "name": "Pepino (3x)", "price": 1000 },
+        { "id": "p9", "name": "Tomate 1kg", "price": 1000 },
+        { "id": "p10", "name": "Trozo zapallo 1kg", "price": 1000 },
+        { "id": "p11", "name": "Limón 1kg", "price": 800 },
+        { "id": "p12", "name": "Zanahoria 1kg", "price": 800 },
+        { "id": "p13", "name": "Morrón Rojo", "price": 500 },
+        { "id": "p14", "name": "Zapallo Italiano (3x)", "price": 1000 },
+        { "id": "p15", "name": "Palta 1kg", "price": 2500 },
+        { "id": "p16", "name": "Papa nueva 1kg", "price": 500 },
+        { "id": "p17", "name": "Saco de papa", "price": 7000 },
+        { "id": "p18", "name": "Mango (unidad)", "price": 1200 },
+        { "id": "p19", "name": "Plátano 1kg", "price": 1500 }
+      ]
+    },
+    {
+      "id": "extras",
+      "title": "Extras",
+      "items": [
+        { "id": "e1", "name": "Bandeja de Huevo (extra)", "price": 5500 },
+        { "id": "e2", "name": "Poroto Tortola 1kg", "price": 3500 },
+        { "id": "e3", "name": "Lenteja 1kg", "price": 3500 },
+        { "id": "e4", "name": "Arveja 1kg", "price": 3500 },
+        { "id": "e5", "name": "Ajos Chileno (3x)", "price": 1000 },
+
+        {
+          "id": "condimentos",
+          "name": "Condimentos (bolsita)",
+          "note": "Selecciona el/los condimentos y su cantidad.",
+          "variants": [
+            { "id": "cond_comino", "name": "Comino", "price": 200 },
+            { "id": "cond_alino", "name": "Aliño completo", "price": 200 },
+            { "id": "cond_merken", "name": "Merkén", "price": 200 }
+          ]
+        }
+      ]
+    }
+  ]
+}

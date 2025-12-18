@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo - Donde Ñatito</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #135c26;
+      --card: rgba(255,255,255,0.07);
+      --line: rgba(255,255,255,0.14);
+      --text: #f3fff3;
+      --muted: rgba(243,255,243,0.8);
+      --max: 1120px;
+      --radius: 18px;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .wrap{ max-width: var(--max); margin:0 auto; padding: 34px 16px 60px; }
+    h1{
+      font-family:"JetBrains Mono", monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 2.2rem;
+      line-height:1.05;
+      margin-bottom: 8px;
+    }
+    .tagline{
+      font-family:"JetBrains Mono", monospace;
+      font-size: 1.05rem;
+      opacity: 0.95;
+      margin-bottom: 10px;
+    }
+    .helper{
+      color: var(--muted);
+      max-width: 60ch;
+      font-size: 0.98rem;
+      margin-bottom: 18px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    .panel{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .panel h2{
+      font-family:"JetBrains Mono", monospace;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+    .panel p{
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .section{
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+    .section:first-of-type{ border-top: 0; padding-top: 0; margin-top: 0; }
+
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .items{ display:grid; gap: 10px; }
+
+    .item{
+      display:grid;
+      grid-template-columns: 22px 1fr auto;
+      gap: 10px;
+      align-items:center;
+      padding: 10px 10px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(0,0,0,0.08);
+    }
+    .item label{ display:block; cursor:pointer; }
+    .name{ font-weight:600; margin-bottom: 2px; }
+    .price{ color: var(--muted); font-size: 0.92rem; }
+
+    .qty{
+      display:flex;
+      gap: 8px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .qty input{
+      width: 64px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      outline:none;
+      text-align:center;
+    }
+    .qty input:disabled{ opacity: 0.45; cursor:not-allowed; }
+
+    input[type="checkbox"]{
+      width: 18px; height: 18px;
+      accent-color: #b6ffb6;
+      cursor:pointer;
+    }
+
+    .summary{
+      position: sticky;
+      top: 14px;
+    }
+    .summary-box{
+      background: rgba(0,0,0,0.12);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-top: 12px;
+      min-height: 160px;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92rem;
+      color: rgba(243,255,243,0.92);
+    }
+
+    .row{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+      margin-top: 10px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+      border-radius: 999px;
+      padding: 12px 16px;
+      transition: 0.15s ease;
+      white-space:nowrap;
+      width: 100%;
+    }
+    .btn-primary{
+      background: #0f3e13;
+      color: #fff;
+    }
+    .btn-primary:hover{ filter: brightness(1.07); }
+    .btn-ghost{
+      background: rgba(255,255,255,0.10);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .btn-ghost:hover{ background: rgba(255,255,255,0.14); }
+    .hint{ font-size: 0.9rem; color: var(--muted); margin-top: 10px; }
+
+    /* Variantes */
+    .group-head{
+      grid-template-columns: 1fr;
+      padding: 10px 12px;
+    }
+    .group-title{
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .group-note{
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .variant{
+      margin-left: 14px;
+      border-left: 2px solid rgba(255,255,255,0.14);
+      padding-left: 10px;
+    }
+
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      .summary{ position: relative; top: 0; }
+      h1{ font-size: 1.9rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <h1>CATÁLOGO</h1>
+    <div class="tagline">¡Pide lo que quieras!</div>
+    <p class="helper">
+      Selecciona productos, ajusta cantidades y presiona <b>“Enviar pedido por WhatsApp”</b>.
+    </p>
+
+    <section class="grid">
+      <!-- LISTA -->
+      <div class="panel">
+        <h2>Productos</h2>
+        <p>Marca lo que necesites (puedes editar cantidades).</p>
+
+        <div id="catalogRoot"></div>
+      </div>
+
+      <!-- RESUMEN -->
+      <aside class="panel summary">
+        <h2>Tu pedido</h2>
+        <p>Se arma automáticamente con tus selecciones.</p>
+
+        <div class="row">
+          <button class="btn btn-ghost" id="clearBtn" type="button">Limpiar selección</button>
+        </div>
+
+        <div class="summary-box" id="summaryBox">Cargando catálogo...</div>
+
+        <div class="row">
+          <button class="btn btn-primary" id="waBtn" type="button">Enviar pedido por WhatsApp</button>
+        </div>
+        <div class="hint">Se abrirá WhatsApp con el mensaje listo para enviar.</div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    // Estado del carrito: key -> {name, priceText, qty}
+    const cart = new Map();
+
+    const catalogRoot = document.getElementById("catalogRoot");
+    const summaryBox = document.getElementById("summaryBox");
+    const waBtn = document.getElementById("waBtn");
+    const clearBtn = document.getElementById("clearBtn");
+
+    let WA_NUMBER = "56981768060"; // fallback si el JSON no trae número
+
+const moneyCLP = (n) => {
+  if (typeof n !== "number" || !Number.isFinite(n)) return "";
+  // Formato simple: 5500 -> $5.500
+  const s = String(Math.round(n));
+  return "$" + s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
+
+
+    function setWaEnabled(enabled){
+      waBtn.disabled = !enabled;
+      waBtn.style.opacity = enabled ? "1" : "0.6";
+      waBtn.style.cursor = enabled ? "pointer" : "not-allowed";
+    }
+
+    function rebuildSummary() {
+      const selected = Array.from(cart.values());
+
+      if (!selected.length) {
+        summaryBox.textContent = "Aún no seleccionas productos.";
+        setWaEnabled(false);
+        return { message: "" };
+      }
+
+      const lines = [];
+      lines.push("Hola! Quiero hacer este pedido:");
+      lines.push("");
+      selected.forEach((it) => lines.push(`- ${it.qty} x ${it.name} (${it.priceText})`));
+      lines.push("");
+      lines.push("Gracias!");
+
+      const message = lines.join("\n");
+      summaryBox.textContent = message;
+      setWaEnabled(true);
+
+      return { message };
+    }
+
+    function openWhatsApp() {
+      const { message } = rebuildSummary();
+      if (!message) return;
+      const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function clearAll(){
+      cart.clear();
+      // reset UI
+      const checks = catalogRoot.querySelectorAll('input[type="checkbox"].pick');
+      checks.forEach((cb) => { cb.checked = false; });
+
+      const qtys = catalogRoot.querySelectorAll('input[type="number"].qty-input');
+      qtys.forEach((q) => { q.value = "1"; q.disabled = true; });
+
+      rebuildSummary();
+    }
+
+    function upsertCart(key, name, priceText, qty){
+      cart.set(key, { name, priceText, qty: Math.max(1, qty|0) });
+      rebuildSummary();
+    }
+
+    function removeCart(key){
+      cart.delete(key);
+      rebuildSummary();
+    }
+
+    function createItemRow({ key, labelName, priceNumber, checkboxId, indentVariant=false }) {
+      const priceText = typeof priceNumber === "number" ? moneyCLP(priceNumber) : "";
+      const row = document.createElement("div");
+      row.className = "item" + (indentVariant ? " variant" : "");
+
+      row.innerHTML = `
+        <input type="checkbox" class="pick" id="${checkboxId}">
+        <label for="${checkboxId}">
+          <div class="name">${labelName}</div>
+          <div class="price">${priceText}</div>
+        </label>
+        <div class="qty">
+          <input type="number" class="qty-input" min="1" value="1" disabled>
+        </div>
+      `;
+
+      const cb = row.querySelector(".pick");
+      const qtyInput = row.querySelector(".qty-input");
+
+      cb.addEventListener("change", () => {
+        qtyInput.disabled = !cb.checked;
+
+        if (!cb.checked) {
+          qtyInput.value = "1";
+          removeCart(key);
+          return;
+        }
+
+        const qty = parseInt(qtyInput.value || "1", 10) || 1;
+        upsertCart(key, labelName, priceText, qty);
+      });
+
+      qtyInput.addEventListener("input", () => {
+        if (!cb.checked) return;
+        const qty = parseInt(qtyInput.value || "1", 10) || 1;
+        upsertCart(key, labelName, priceText, qty);
+      });
+
+      qtyInput.addEventListener("change", () => {
+        if (!cb.checked) return;
+        const qty = parseInt(qtyInput.value || "1", 10) || 1;
+        upsertCart(key, labelName, priceText, qty);
+      });
+
+      return row;
+    }
+
+    function renderCatalog(data){
+      WA_NUMBER = (data && data.waNumber) ? String(data.waNumber) : WA_NUMBER;
+
+      catalogRoot.innerHTML = "";
+
+      (data.categories || []).forEach((cat) => {
+        const section = document.createElement("div");
+        section.className = "section";
+
+        section.innerHTML = `
+          <div class="section-title">${cat.title || "Sección"}</div>
+          <div class="items"></div>
+        `;
+
+        const itemsWrap = section.querySelector(".items");
+
+        (cat.items || []).forEach((it) => {
+          // Si tiene variantes: el principal es un "grupo" sin cantidad.
+          if (Array.isArray(it.variants) && it.variants.length) {
+            const head = document.createElement("div");
+            head.className = "item group-head";
+            head.innerHTML = `
+              <div class="group-title">${it.name}</div>
+              ${it.note ? `<div class="group-note">${it.note}</div>` : ``}
+            `;
+            itemsWrap.appendChild(head);
+
+            it.variants.forEach((v) => {
+              const key = `${it.id}::${v.id}`;
+              const checkboxId = `pick_${it.id}_${v.id}`;
+              const labelName = `${it.name} - ${v.name}`;
+              itemsWrap.appendChild(createItemRow({
+                key,
+                labelName,
+                priceNumber: v.price,
+                checkboxId,
+                indentVariant: true
+              }));
+            });
+
+            return;
+          }
+
+          // Sin variantes: cantidad en el principal.
+          const key = it.id;
+          const checkboxId = `pick_${it.id}`;
+          itemsWrap.appendChild(createItemRow({
+            key,
+            labelName: it.name,
+            priceNumber: it.price,
+            checkboxId,
+            indentVariant: false
+          }));
+        });
+
+        catalogRoot.appendChild(section);
+      });
+
+      rebuildSummary();
+    }
+
+    async function init(){
+      try {
+        const res = await fetch("./catalogo.json", { cache: "no-store" });
+        if (!res.ok) throw new Error("No se pudo cargar catalogo.json");
+        const data = await res.json();
+        renderCatalog(data);
+      } catch (e) {
+        summaryBox.textContent = "Error cargando catálogo. Revisa catalogo.json";
+        setWaEnabled(false);
+        console.error(e);
+      }
+    }
+
+    clearBtn.addEventListener("click", clearAll);
+    waBtn.addEventListener("click", openWhatsApp);
+
+    setWaEnabled(false);
+    init();
+  </script>
+</body>
+</html>
