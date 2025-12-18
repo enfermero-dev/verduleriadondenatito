@@ -43,7 +43,12 @@
           "variants": [
             { "id": "cond_comino", "name": "Comino", "price": 200 },
             { "id": "cond_alino", "name": "Aliño completo", "price": 200 },
-            { "id": "cond_merken", "name": "Merkén", "price": 200 }
+            { "id": "cond_pimenton", "name": "Pimentón", "price": 200 },
+            { "id": "cond_ajo_polvo", "name": "Ajo en polvo", "price": 200 },
+            { "id": "cond_oregano", "name": "Orégano", "price": 200 },
+            { "id": "cond_merken", "name": "Merkén", "price": 200 },
+            { "id": "cond_clavo", "name": "Clavo de olor", "price": 200 },
+            { "id": "cond_canela", "name": "Canela", "price": 200 }
           ]
         }
       ]
