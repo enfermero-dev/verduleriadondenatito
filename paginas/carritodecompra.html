@@ -256,13 +256,12 @@
 
     let WA_NUMBER = "56981768060"; // fallback si el JSON no trae número
 
-const moneyCLP = (n) => {
-  if (typeof n !== "number" || !Number.isFinite(n)) return "";
-  // Formato simple: 5500 -> $5.500
-  const s = String(Math.round(n));
-  return "$" + s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-};
-
+    const moneyCLP = (n) => {
+      if (typeof n !== "number" || !Number.isFinite(n)) return "";
+      // Formato simple: 5500 -> $5.500
+      const s = String(Math.round(n));
+      return "$" + s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    };
 
     function setWaEnabled(enabled){
       waBtn.disabled = !enabled;
@@ -432,7 +431,8 @@ const moneyCLP = (n) => {
 
     async function init(){
       try {
-        const res = await fetch("./catalogo.json", { cache: "no-store" });
+        // ✅ Ruta absoluta (JSON alojado en el dominio)
+        const res = await fetch("https://xn--verduleriadondeatito-i7b.cl/paginas/catalogo.json", { cache: "no-store" });
         if (!res.ok) throw new Error("No se pudo cargar catalogo.json");
         const data = await res.json();
         renderCatalog(data);
